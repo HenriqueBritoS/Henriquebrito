@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><style data-metaai-safe-area>:root { scroll-padding-top: var(--safe-area-scroll-padding-top, 0px); }
+<head>
+<script>
+(function(){
+  try{
+    var KEY='sb_publishable_VRWSXvm9x5-1Nws-cYjXPA_O0nZB92h';
+    var URL='https://wkqbcyqutxsnqelcmhyc.supabase.co';
+    // O código Google que já existe no seu arquivo lê esta chave - era isso que faltava
+    if(!localStorage.getItem('amem_supabase_key')) localStorage.setItem('amem_supabase_key', KEY);
+    localStorage.setItem('amem_supabase_anon_key', KEY);
+    window.__AMEM_SUPABASE_URL = URL;
+    window.__AMEM_SUPABASE_KEY = KEY;
+    window.__AMEM_SUPABASE_CONFIGURED = true;
+  }catch(e){}
+})();
+</script>
+<style data-metaai-safe-area>:root { scroll-padding-top: var(--safe-area-scroll-padding-top, 0px); }
 [data-safe-area-inset-root]::before {
   background: inherit;
   content: "";
@@ -3282,5 +3297,22 @@ Error generating stack: `+a.message+`
 })();
 </script>
 
+
+<script>
+(function(){
+  // Patch mínimo: se o script de auth do arquivo original não carregou por falta de chave, tenta novamente ao clicar em Google
+  document.addEventListener('click', function(e){
+    try{
+      var b = e.target.closest && e.target.closest('button');
+      if(!b) return;
+      var txt = (b.textContent||'').toLowerCase();
+      if(txt.indexOf('google')!==-1){
+        try{ localStorage.setItem('amem_supabase_key','sb_publishable_VRWSXvm9x5-1Nws-cYjXPA_O0nZB92h'); }catch(_){}
+      }
+    }catch(_){}
+  }, true);
+})();
+</script>
 </body>
+
 </html>
